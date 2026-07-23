@@ -1,0 +1,5 @@
+# Runtime database — created automatically on first save; don't commit it
+data/networkkb.sqlite
+data/networkkb.sqlite-journal
+data/networkkb.sqlite-wal
+data/networkkb.sqlite-shm

@@ -1,0 +1,9 @@
+# Keep these out of the image — they're either not needed at runtime,
+# or (in the sqlite case) we specifically don't want a stale/dev copy of
+# the database baked into the image itself; it should only ever exist in
+# the mounted volume, created fresh by the app on first save.
+.git
+.gitignore
+README.md
+data/networkkb.sqlite
+data/networkkb.sqlite-journal

@@ -1,0 +1,37 @@
+# ── docker-compose.yml ──
+# Defines the NetworkKB service: build it from the Dockerfile next to
+# this file, expose it on the LAN, and make sure saved designs survive
+# container restarts/rebuilds/updates.
+
+services:
+  networkkb:
+    # Build the image from the Dockerfile in this same folder, instead of
+    # pulling a pre-made image from Docker Hub. This is normal for a
+    # small custom app like this one — you're the only "publisher".
+    build: .
+
+    container_name: networkkb
+
+    ports:
+      # host_port:container_port — change 8080 if that port is already
+      # used by something else on your homelab host. The container
+      # itself always listens on 80 (Apache's default), only the LEFT
+      # side changes what you type in your browser.
+      - "8080:80"
+
+    volumes:
+      # This is the important line for data permanence. Without it, the
+      # data/networkkb.sqlite file would live INSIDE the container's
+      # writable layer, and vanish the moment you rebuild or remove the
+      # container (e.g. after `docker compose up --build` to pick up a
+      # code change). Mounting the host's ./data folder into the
+      # container's /var/www/html/data means the SQLite file physically
+      # lives on your homelab's disk and survives container churn.
+      - ./data:/var/www/html/data
+
+    restart: unless-stopped
+    # Tells Docker to automatically restart this container if it crashes,
+    # AND to bring it back up automatically after the Docker daemon
+    # itself restarts (e.g. after a homelab host reboot). "unless-stopped"
+    # means it won't restart only if YOU explicitly ran `docker compose
+    # stop` — a manual stop stays stopped until you start it again.
