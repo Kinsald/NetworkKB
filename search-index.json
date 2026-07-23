@@ -1,0 +1,713 @@
+[
+ {
+  "id": "dns-concepts",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "How DNS works",
+  "desc": "The hierarchy and the resolution process — turning a name into an IP address.",
+  "headings": "Visual: recursive resolution flow The hierarchy, top to bottom Recursive query Iterative query",
+  "terms": ""
+ },
+ {
+  "id": "dns-records",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "Record types",
+  "desc": "The records you'll actually encounter, with real examples for each.",
+  "headings": "Quick reference table A / AAAA CNAME MX TXT NS PTR",
+  "terms": "A AAAA CNAME MX TXT NS PTR SRV SOA"
+ },
+ {
+  "id": "dns-builder",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "🧮 DNS record builder v1.0.0",
+  "desc": "Pick a record type — the form below changes to match. Fill it in (or load the example) to see real zone-file syntax.",
+  "headings": "Record type Fields Generated record (zone-file syntax) copy",
+  "terms": "A — IPv4 address AAAA — IPv6 address CNAME — Alias MX — Mail exchange TXT — Text NS — Name server PTR — Reverse lookup SRV — Service locator SOA — Start of authority Type"
+ },
+ {
+  "id": "dns-troubleshooting",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "DNS troubleshooting",
+  "desc": "The commands to actually diagnose a resolution problem.",
+  "headings": "Core lookup tools Diagnostic flow Client-side cache Split-horizon / split-brain DNS",
+  "terms": "1 2 3 4 5"
+ },
+ {
+  "id": "osi-overview",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "The 7 layers",
+  "desc": "The OSI model — a mental map for where every protocol, device, and problem lives.",
+  "headings": "The stack, top to bottom Full reference table",
+  "terms": "7 6 5 4 3 2 1"
+ },
+ {
+  "id": "osi-encapsulation",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "Encapsulation & de-encapsulation",
+  "desc": "How data gets wrapped going down the stack, and unwrapped coming back up.",
+  "headings": "Visual: data growing as it's encapsulated Worked example — loading a web page",
+  "terms": ""
+ },
+ {
+  "id": "osi-layers-deep",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "Layer-by-layer detail",
+  "desc": "What each layer is actually responsible for, one at a time.",
+  "headings": "L7 Application L6 Presentation L5 Session L4 Transport L3 Network L2 Data Link L1 Physical",
+  "terms": ""
+ },
+ {
+  "id": "osi-tcpip",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "OSI vs TCP/IP",
+  "desc": "Two models describing the same stack — OSI has 7 layers, TCP/IP collapses them to 4.",
+  "headings": "Side-by-side mapping",
+  "terms": "7 Application 6 Presentation 5 Session 4 Transport 3 Network 2 Data Link 1 Physical"
+ },
+ {
+  "id": "osi-troubleshooting",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "Troubleshooting by layer",
+  "desc": "The bottom-up method — the practical reason to actually know this model.",
+  "headings": "Bottom-up troubleshooting flow",
+  "terms": ""
+ },
+ {
+  "id": "cloud-service-models",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "IaaS / PaaS / SaaS",
+  "desc": "The three classic cloud service models — how much you manage vs. how much the provider manages.",
+  "headings": "Quick comparison IaaS Infrastructure as a Service PaaS Platform as a Service SaaS Software as a Service",
+  "terms": "What do I actually deploy? Who patches the OS? Typical user Flexibility Operational burden"
+ },
+ {
+  "id": "cloud-responsibility",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "🧮 Shared responsibility model",
+  "desc": "Click a model — see exactly who manages each layer, from the data center up to your data.",
+  "headings": "Pick a model Responsibility by layer",
+  "terms": ""
+ },
+ {
+  "id": "cloud-deployment",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "Deployment models",
+  "desc": "Public, private, hybrid, and multi-cloud — where the infrastructure actually lives.",
+  "headings": "Choosing a model — the real trade-offs Public cloud Private cloud Hybrid cloud Multi-cloud",
+  "terms": "Lowest cost, fastest to deploy Unpredictable/bursty workloads Avoiding single-vendor lock-in Existing large on-prem investment"
+ },
+ {
+  "id": "cloud-networking",
+  "section": "Fundamentals",
+  "parent": "fundamentals",
+  "title": "Cloud networking",
+  "desc": "How your on-prem network actually connects to and works alongside the cloud.",
+  "headings": "The virtual network layer Connecting your network TO the cloud DNS across environments Addressing overlap",
+  "terms": "VPC (Virtual Private Cloud) VNet (Virtual Network) Subnets Security Groups / NSGs Route tables"
+ },
+ {
+  "id": "acl-basics",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "What is an ACL?",
+  "desc": "An ordered list of permit/deny rules applied to a router interface.",
+  "headings": "The core concept Applying to an interface permit deny ⬇ Top-down, first match wins 📊 Hit counters",
+  "terms": ""
+ },
+ {
+  "id": "acl-direction",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "In vs Out direction",
+  "desc": "Direction is always relative to the router interface — not the network.",
+  "headings": "Visual: interface-relative direction Placement decisions in Checked BEFORE routing out Checked AFTER routing",
+  "terms": ""
+ },
+ {
+  "id": "acl-types",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "Standard vs Extended ACLs",
+  "desc": "Two types with very different granularity — and different placement rules.",
+  "headings": "Standard 1–99, 1300–1999 Extended 100–199, 2000–2699 Extended ACL syntax",
+  "terms": ""
+ },
+ {
+  "id": "acl-wildcard",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "Wildcard masks",
+  "desc": "The inverse of a subnet mask — 0 = must match, 1 = don't care.",
+  "headings": "Reference table",
+  "terms": "/8 /16 /24 /25 /26 /27 /28 /30 /32"
+ },
+ {
+  "id": "acl-web",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "Web access ACL example",
+  "desc": "Allow HTTP/HTTPS outbound. Block unsolicited inbound from internet.",
+  "headings": "WAN inbound ACL LAN outbound restriction Verify",
+  "terms": ""
+ },
+ {
+  "id": "acl-builder",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "ACL builder v1.0.0",
+  "desc": "Build extended ACL rules visually. Copy direct to IOS.",
+  "headings": "ACL name Add a rule Generated config copy",
+  "terms": "permit deny ip (any) tcp udp icmp none eq neq lt gt range established log Action Protocol Source IP Source wildcard Destination IP Dest wildcard Port operator Port End port (range) Extras"
+ },
+ {
+  "id": "acl-validator",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "Config validator v1.0.0",
+  "desc": "Paste IOS config — flags common ACL and NAT mistakes.",
+  "headings": "Paste your config Results",
+  "terms": ""
+ },
+ {
+  "id": "nat-concepts",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "How NAT works",
+  "desc": "Rewrites IP addresses as traffic crosses the router. Inside hosts use private IPs; internet sees your public IP.",
+  "headings": "Visual: inside/outside, local/global NAT order of operations",
+  "terms": ""
+ },
+ {
+  "id": "nat-types",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "NAT types",
+  "desc": "Three variants — each for a different use case.",
+  "headings": "PAT / overload Static NAT Static port NAT",
+  "terms": ""
+ },
+ {
+  "id": "nat-pat",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "PAT / overload",
+  "desc": "Many inside hosts share one public IP via port number tracking.",
+  "headings": "PAT using WAN interface IP PAT with pool (multiple WAN IPs)",
+  "terms": ""
+ },
+ {
+  "id": "nat-static",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "Static port NAT",
+  "desc": "Port forwarding — map an outside port to an inside server.",
+  "headings": "Your static port forwards Verify",
+  "terms": ""
+ },
+ {
+  "id": "nat-fullstack",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "Full ACL + NAT stack",
+  "desc": "Complete config — LAN 192.168.200.0/24, WAN 192.168.1.240–242.",
+  "headings": "Complete paste-ready config",
+  "terms": ""
+ },
+ {
+  "id": "nat-troubleshoot",
+  "section": "ACL & NAT",
+  "parent": "acl",
+  "title": "Troubleshoot NAT",
+  "desc": "Step-by-step diagnostic for when NAT isn't working.",
+  "headings": "NAT diagnostic flow",
+  "terms": "1 2 3 4 5 6"
+ },
+ {
+  "id": "subnet-calc",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "Subnet calculator v1.0.0",
+  "desc": "Enter a network in CIDR notation to get all subnet details.",
+  "headings": "CIDR lookup Common subnets",
+  "terms": "Network (CIDR)"
+ },
+ {
+  "id": "wildcard-calc",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "Wildcard mask calculator v1.0.0",
+  "desc": "Enter a subnet mask — get the wildcard for ACL use.",
+  "headings": "Subnet → wildcard",
+  "terms": "Subnet mask"
+ },
+ {
+  "id": "ospf-cost",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "OSPF cost calculator v1.0.1",
+  "desc": "Formula: reference bandwidth ÷ link bandwidth. Minimum cost = 1.",
+  "headings": "Calculate OSPF cost Common costs (default 100 Mbps reference)",
+  "terms": "10 Gbps 1 Gbps 100 Mbps 10 Mbps 1.544 Mbps (T1) 512 Kbps Mbps Gbps Kbps Link bandwidth Reference bandwidth"
+ },
+ {
+  "id": "vlan-planner",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "VLAN planner v1.0.0",
+  "desc": "Add VLANs and generate IOS switch config automatically.",
+  "headings": "Add a VLAN VLAN table Generated config copy",
+  "terms": "No VLANs added yet VLAN ID (1–4094) Name Subnet (CIDR) Gateway IP"
+ },
+ {
+  "id": "banner-gen",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "Banner generator v1.0.0",
+  "desc": "Build a legal-warning / MOTD banner and pick a delimiter Cisco will accept.",
+  "headings": "Banner settings Generated config copy Why the delimiter matters",
+  "terms": "motd — shown before login prompt login — shown at login prompt exec — shown after successful login # (most common choice) ^ ~ $ % @ | Banner type Delimiter character Message text"
+ },
+ {
+  "id": "flashcards",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "Flashcards v1.2.0",
+  "desc": "Click card to reveal answer. Mark whether you knew it.",
+  "headings": "Filter by topic",
+  "terms": ""
+ },
+ {
+  "id": "ospf",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "OSPF",
+  "desc": "Open Shortest Path First — link-state, AD 110, Dijkstra SPF.",
+  "headings": "Key commands OSPF troubleshooting checklist Hello / Dead timers (broadcast) Hello / Dead timers (NBMA) DR/BDR election OSPF cost formula",
+  "terms": "1 2 3 4 5 6"
+ },
+ {
+  "id": "eigrp",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "EIGRP",
+  "desc": "Enhanced IGRP — advanced distance-vector, DUAL algorithm, AD 90/170.",
+  "headings": "Key commands K-values (default) Feasible Successor Hello / Hold (LAN) Stuck in Active (SIA)",
+  "terms": ""
+ },
+ {
+  "id": "bgp",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "BGP",
+  "desc": "Border Gateway Protocol — path-vector, TCP 179, AD 20/200.",
+  "headings": "Best path algorithm — in order Key commands",
+  "terms": ""
+ },
+ {
+  "id": "route-comparison",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "Protocol comparison",
+  "desc": "OSPF vs EIGRP vs BGP at a glance.",
+  "headings": "",
+  "terms": "Type Algorithm AD (int/ext) Transport Multicast Metric Hello Hierarchy Supports VLSM Unequal LB"
+ },
+ {
+  "id": "vlans",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "VLANs & trunking",
+  "desc": "VLAN creation, port assignment, trunking, inter-VLAN routing.",
+  "headings": "VLAN fundamentals Key commands",
+  "terms": ""
+ },
+ {
+  "id": "stp",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "Spanning Tree",
+  "desc": "STP, RSTP, MSTP — prevents L2 loops by blocking redundant paths.",
+  "headings": "Key commands Root bridge election RSTP convergence PortFast + BPDU Guard STP TCN effect",
+  "terms": ""
+ },
+ {
+  "id": "stp-flavors",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "STP / PVST+ / RSTP / MST",
+  "desc": "The four spanning-tree variants — what they are and when each is used.",
+  "headings": "The four flavors compared Configuration Why per-VLAN matters Why MST exists",
+  "terms": "STP PVST+ Rapid-PVST+ MST"
+ },
+ {
+  "id": "stp-states",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "Port states & roles",
+  "desc": "How STP and RSTP states differ, and what each port role does.",
+  "headings": "Port states — STP vs RSTP Port roles Path cost values",
+  "terms": "Disabled Blocking Listening Learning Forwarding 10 Mbps 100 Mbps 1 Gbps 10 Gbps"
+ },
+ {
+  "id": "stp-protection",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "STP protection features",
+  "desc": "The guards that keep spanning tree stable — what each protects against and where to put it.",
+  "headings": "Where each feature goes Configuration BPDU Guard vs Root Guard Loop Guard vs UDLD",
+  "terms": "PortFast BPDU Guard BPDU Filter Root Guard Loop Guard UDLD"
+ },
+ {
+  "id": "stp-design",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "Root bridge design",
+  "desc": "Choosing and enforcing your root bridge — and aligning it with your L3 gateway.",
+  "headings": "Setting the root — two ways Bridge ID math Load balancing across uplinks",
+  "terms": ""
+ },
+ {
+  "id": "etherchannel",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "EtherChannel",
+  "desc": "Bundle physical links into one logical link — bandwidth + redundancy.",
+  "headings": "LACP configuration",
+  "terms": ""
+ },
+ {
+  "id": "ospf-config",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "OSPF config & areas",
+  "desc": "Multi-area OSPF, area types, and configuration patterns.",
+  "headings": "Basic multi-area configuration OSPF area types LSA types quick reference",
+  "terms": "Backbone (0) Standard Stub Totally Stubby NSSA Totally NSSA 1 2 3 4 5 7"
+ },
+ {
+  "id": "eigrp-config",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "EIGRP config",
+  "desc": "Named mode, summarization, stub, and unequal-cost load balancing.",
+  "headings": "Named mode configuration (modern) Summarization & stub",
+  "terms": ""
+ },
+ {
+  "id": "bgp-config",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "BGP config",
+  "desc": "eBGP/iBGP setup, next-hop-self, and path manipulation.",
+  "headings": "Basic eBGP + iBGP Path manipulation — influence best path",
+  "terms": ""
+ },
+ {
+  "id": "intervlan",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "Inter-VLAN routing",
+  "desc": "Three ways to route between VLANs — router-on-a-stick, SVIs, and routed ports.",
+  "headings": "Router-on-a-stick — subinterface config L3 switch — SVI config (preferred) Router-on-a-stick SVI (L3 switch) Routed port",
+  "terms": ""
+ },
+ {
+  "id": "redistribution",
+  "section": "Routing & Switching",
+  "parent": "routing",
+  "title": "Route redistribution",
+  "desc": "Moving routes between protocols — and avoiding the loops it can create.",
+  "headings": "Basic redistribution with seed metrics Loop prevention with route tags",
+  "terms": ""
+ },
+ {
+  "id": "ipsec-concepts",
+  "section": "Security",
+  "parent": "security",
+  "title": "IPsec fundamentals",
+  "desc": "The building blocks: ESP/AH, transforms, and what IPsec actually protects.",
+  "headings": "The building blocks of a transform set ESP IP protocol 50 AH IP protocol 51 Tunnel mode Transport mode",
+  "terms": "Encryption Hash / integrity Authentication DH group Protocol"
+ },
+ {
+  "id": "ipsec-phases",
+  "section": "Security",
+  "parent": "security",
+  "title": "IKE Phase 1 & Phase 2",
+  "desc": "How the tunnel is negotiated in two stages.",
+  "headings": "Phase 1 IKE / ISAKMP SA — build the management channel Phase 2 IPsec SA — protect the actual data Negotiation flow",
+  "terms": ""
+ },
+ {
+  "id": "ipsec-s2s",
+  "section": "Security",
+  "parent": "security",
+  "title": "Site-to-site IPsec config",
+  "desc": "Classic crypto-map site-to-site tunnel between two routers.",
+  "headings": "Router A — complete config",
+  "terms": ""
+ },
+ {
+  "id": "ipsec-gre",
+  "section": "Security",
+  "parent": "security",
+  "title": "GRE over IPsec",
+  "desc": "Wrap routing protocols and multicast inside an encrypted tunnel.",
+  "headings": "GRE tunnel protected by IPsec",
+  "terms": ""
+ },
+ {
+  "id": "ipsec-dmvpn",
+  "section": "Security",
+  "parent": "security",
+  "title": "DMVPN",
+  "desc": "Dynamic Multipoint VPN — hub-and-spoke that builds spoke-to-spoke tunnels on demand.",
+  "headings": "Three technologies combined DMVPN phases Hub mGRE config Spoke config mGRE NHRP IPsec",
+  "terms": "Phase 1 Phase 2 Phase 3"
+ },
+ {
+  "id": "ipsec-troubleshoot",
+  "section": "Security",
+  "parent": "security",
+  "title": "IPsec troubleshooting",
+  "desc": "Step-by-step diagnostic flow for tunnels that won't come up.",
+  "headings": "Diagnostic flow Debug commands",
+  "terms": "1 2 3 4 5 6 7"
+ },
+ {
+  "id": "ngfw-concepts",
+  "section": "Security",
+  "parent": "security",
+  "title": "What makes a firewall \"next-gen\"",
+  "desc": "The difference between a traditional stateful firewall and an NGFW.",
+  "headings": "Traditional firewall vs NGFW Why port-based rules stopped being enough Cisco's NGFW line",
+  "terms": "Filters on IP/port/state Identifies the actual application Blocks known exploits/malware in-line Decrypts and inspects TLS traffic"
+ },
+ {
+  "id": "ngfw-features",
+  "section": "Security",
+  "parent": "security",
+  "title": "Core NGFW features",
+  "desc": "The specific capabilities that make up \"next-gen\" — one at a time.",
+  "headings": "App-ID Application identification DPI Deep Packet Inspection IPS Intrusion Prevention System SSL/TLS Inspection URL Filtering & Reputation Identity Awareness",
+  "terms": ""
+ },
+ {
+  "id": "ise-concepts",
+  "section": "Security",
+  "parent": "security",
+  "title": "What Cisco ISE does",
+  "desc": "Identity Services Engine — deciding who and what gets network access, and with what permissions.",
+  "headings": "The core question ISE answers 802.1X MAB (MAC Authentication Bypass) Posture assessment Profiling",
+  "terms": ""
+ },
+ {
+  "id": "ise-policy",
+  "section": "Security",
+  "parent": "security",
+  "title": "Policy & TrustSec",
+  "desc": "How ISE's decisions actually get enforced across the network.",
+  "headings": "Enforcement mechanisms Why SGTs instead of just IP/VLAN ACLs? Micro-segmentation without a redesign",
+  "terms": "dACL (downloadable ACL) VLAN assignment SGT (Security Group Tag) SGACL (Security Group ACL)"
+ },
+ {
+  "id": "qos-concepts",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "QoS models",
+  "desc": "Why QoS exists and the three deployment models.",
+  "headings": "The four QoS tools Best Effort IntServ DiffServ",
+  "terms": "Classification Marking Queuing Policing / Shaping"
+ },
+ {
+  "id": "qos-marking",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "Marking: DSCP & CoS",
+  "desc": "Where markings live and how the values map.",
+  "headings": "Key DSCP values you must know AF formula & PHB groups CoS (Layer 2) DSCP (Layer 3)",
+  "terms": "EF (Expedited Fwd) CS6 AF41 AF31 AF21 AF11 DF / BE"
+ },
+ {
+  "id": "qos-queuing",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "Queuing & LLQ",
+  "desc": "What gets sent first when the link is congested.",
+  "headings": "Queuing mechanisms",
+  "terms": "FIFO WFQ CBWFQ LLQ"
+ },
+ {
+  "id": "qos-shaping",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "Policing vs shaping",
+  "desc": "Two ways to enforce a rate — with very different behavior.",
+  "headings": "When to use which Policing Shaping",
+  "terms": "Match ISP committed rate (CIR) outbound Enforce a customer/user cap inbound Avoid drops on TCP-heavy traffic"
+ },
+ {
+  "id": "qos-config",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "MQC config example",
+  "desc": "Modular QoS CLI — the class-map / policy-map / service-policy workflow.",
+  "headings": "The three-step MQC model Complete voice/video/data example",
+  "terms": ""
+ },
+ {
+  "id": "qos-dscp",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "DSCP reference",
+  "desc": "Full DSCP-to-decimal mapping and recommended markings.",
+  "headings": "Complete AF matrix (decimal values) Class Selector (CS) — backward compatible with IP Precedence Recommended enterprise markings (Cisco)",
+  "terms": "AF1x (bulk) AF2x (transact.) AF3x (signaling) AF4x (video) CS0 CS1 CS3 CS4 CS5 CS6 CS7 Voice (VoIP RTP) Video conferencing Call signaling (SIP/H.323) Routing protocols Transactional/DB Bulk (backup, FTP) Scavenger (P2P)"
+ },
+ {
+  "id": "wifi-rf",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "RF fundamentals",
+  "desc": "Spectrum, channels, and the physics that make WiFi work (or not).",
+  "headings": "Signal metrics 2.4 GHz 5 GHz 6 GHz (WiFi 6E) Channel width tradeoff",
+  "terms": "RSSI SNR Noise floor Channel utilization"
+ },
+ {
+  "id": "wifi-standards",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "802.11 standards",
+  "desc": "The generations of WiFi and what each added.",
+  "headings": "802.11 generations Key technologies by generation",
+  "terms": "802.11b 802.11a 802.11g 802.11n 802.11ac 802.11ax 802.11be MIMO Channel bonding MU-MIMO OFDMA BSS Coloring TWT"
+ },
+ {
+  "id": "wifi-capwap",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "WLC & CAPWAP",
+  "desc": "Controller-based wireless — how lightweight APs and the WLC work together.",
+  "headings": "CAPWAP — Control And Provisioning of Wireless Access Points AP join process WLC interface types Autonomous AP Lightweight AP + WLC",
+  "terms": "Management Virtual Dynamic Service Port"
+ },
+ {
+  "id": "wifi-security",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "Wireless security: WPA2 / WPA3",
+  "desc": "Authentication and encryption for WiFi.",
+  "headings": "Security generations 802.1X / EAP methods Personal (PSK / SAE) Enterprise (802.1X)",
+  "terms": "WEP WPA WPA2 WPA3 EAP-TLS PEAP EAP-FAST"
+ },
+ {
+  "id": "wifi-roaming",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "Roaming — 802.11 k / v / r",
+  "desc": "How clients move between APs without dropping calls.",
+  "headings": "Roaming types 802.11k 802.11v 802.11r",
+  "terms": "Intra-controller Inter-controller L2 Inter-controller L3"
+ },
+ {
+  "id": "wifi-troubleshoot",
+  "section": "QoS & Wireless",
+  "parent": "qos",
+  "title": "Wireless troubleshooting",
+  "desc": "Systematic diagnosis for AP-join and client-connectivity issues.",
+  "headings": "Client can't connect — diagnostic flow Key WLC commands",
+  "terms": "1 2 3 4 5 6 7"
+ },
+ {
+  "id": "design-helper",
+  "section": "Design",
+  "parent": "design",
+  "title": "🧮 Interactive Design Helper v2.0.0",
+  "desc": "Enter your site requirements — get a suggested topology, device counts, VLAN plan, and starter configs.",
+  "headings": "Site requirements expand Saved designs Visual topology click a device to view its config Recommended topology expand Device counts & sizing expand Suggested VLAN plan expand Starter configuration (copy or download) expand",
+  "terms": "Basic — single switch OK, cost-sensitive Standard — redundant distribution, dual uplinks High — full redundancy, no single point of failure Yes No 10% 20% 30% Site name Number of users / endpoints Number of floors / closets Redundancy level Voice (VoIP phones)? Wireless (APs)? Wireless LAN Controller? Perimeter firewall + DMZ? Include a DMZ zone? Growth headroom Base IP block (e.g. 10.1.0.0/16)"
+ },
+ {
+  "id": "design-hierarchy",
+  "section": "Design",
+  "parent": "design",
+  "title": "Hierarchical network model",
+  "desc": "The three-layer campus model — and when to collapse it to two.",
+  "headings": "The three layers What lives where Three-tier Collapsed core (two-tier)",
+  "terms": "L2 switching Inter-VLAN routing (SVIs) FHRP gateway (HSRP/VRRP) ACLs / policy / QoS trust Route summarization High-speed L3 transit"
+ },
+ {
+  "id": "design-placement",
+  "section": "Design",
+  "parent": "design",
+  "title": "Device placement & the L2/L3 boundary",
+  "desc": "Deciding where routing starts and which device does what.",
+  "headings": "Placement guidelines Routed access (L3 to the edge) L2 access + L3 distribution (classic)",
+  "terms": ""
+ },
+ {
+  "id": "design-sizing",
+  "section": "Design",
+  "parent": "design",
+  "title": "Sizing & capacity — how much of everything",
+  "desc": "Counting ports, uplinks, and oversubscription so you buy the right gear.",
+  "headings": "Access-layer port count Uplink oversubscription targets PoE budget Stacking vs standalone",
+  "terms": "Access → Distribution Distribution → Core"
+ },
+ {
+  "id": "design-addressing",
+  "section": "Design",
+  "parent": "design",
+  "title": "IP & VLAN design",
+  "desc": "Addressing schemes that summarize cleanly and VLANs that scale.",
+  "headings": "Design a summarizable scheme VLAN design principles",
+  "terms": ""
+ },
+ {
+  "id": "design-redundancy",
+  "section": "Design",
+  "parent": "design",
+  "title": "Redundancy & first-hop gateways",
+  "desc": "Removing single points of failure — links, boxes, and gateways.",
+  "headings": "First-Hop Redundancy Protocols (FHRP) HSRP on a distribution pair Link redundancy Device redundancy",
+  "terms": "HSRP VRRP GLBP"
+ },
+ {
+  "id": "design-checklist",
+  "section": "Design",
+  "parent": "design",
+  "title": "Design checklist — the \"did you think about this?\" view",
+  "desc": "A totality pass across a campus design before you deploy.",
+  "headings": "Topology & hardware L2 / L3 Addressing & services Security & QoS",
+  "terms": ""
+ },
+ {
+  "id": "quickref",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "Quick reference",
+  "desc": "Port numbers, AD values, timers, private IP ranges — one page.",
+  "headings": "TCP ports UDP ports Administrative Distance Private IP ranges (RFC 1918) IP protocol numbers Protocol timers",
+  "terms": "22 23 25 49 53 80 179 443 830 8006 67/68 69 123 161/162 500 514 4500 4789 5246/5247 0 1 20 90 110 115 120 170 200 255 10.0.0.0/8 172.16.0.0/12 192.168.0.0/16 6 17 47 50 88 89 OSPF (LAN) OSPF (NBMA) EIGRP (LAN) EIGRP (WAN) BGP keepalive HSRP VRRP STP Hello STP Forward Delay STP Max Age"
+ },
+ {
+  "id": "changelog",
+  "section": "Tools",
+  "parent": "tools",
+  "title": "📋 Version history v1.0.0",
+  "desc": "Every release, what changed, grouped by New / Updated / Fixed / Removed.",
+  "headings": "",
+  "terms": "Version"
+ }
+]

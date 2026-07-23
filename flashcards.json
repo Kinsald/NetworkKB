@@ -1,0 +1,402 @@
+[
+  [
+    "What does an ACL implicit deny do?",
+    "Drops ALL traffic that doesn't match any rule. It's invisible — no counter, not in show run. Always add explicit deny ip any any log to make drops visible.",
+    "ACL Basics"
+  ],
+  [
+    "Standard ACL — place close to source or destination?",
+    "Close to the DESTINATION. Standard ACLs match source IP only — placing near source would block traffic to ALL destinations, not just the one you want.",
+    "ACL Basics"
+  ],
+  [
+    "Extended ACL — place close to source or destination?",
+    "Close to the SOURCE. Extended ACLs can match protocol + port + destination, so you can filter precisely without blocking unintended destinations.",
+    "ACL Basics"
+  ],
+  [
+    "What does 'established' match in a TCP ACL?",
+    "Packets with the ACK or RST flag set — i.e. response packets for sessions already initiated by the inside host. Not new inbound SYN connections.",
+    "ACL Basics"
+  ],
+  [
+    "Can you have two inbound ACLs on one interface?",
+    "No. Only ONE ACL per interface per direction. A second ip access-group in replaces the first — silently. You can have one IN and one OUT on the same interface.",
+    "ACL Basics"
+  ],
+  [
+    "Wildcard mask for /24 subnet?",
+    "0.0.0.255 — calculated as 255.255.255.255 minus the subnet mask (255.255.255.0). Zero bits must match, one bits are don't-care.",
+    "Wildcard Masks"
+  ],
+  [
+    "Wildcard mask for /16?",
+    "0.0.255.255",
+    "Wildcard Masks"
+  ],
+  [
+    "Wildcard mask for /25?",
+    "0.0.0.127 — /25 = 255.255.255.128, so 255-128=127",
+    "Wildcard Masks"
+  ],
+  [
+    "What does 'host' keyword mean in an ACL?",
+    "Shorthand for a /32 wildcard (0.0.0.0) — the address must match exactly. 'host 10.0.0.1' = '10.0.0.1 0.0.0.0'",
+    "Wildcard Masks"
+  ],
+  [
+    "What is PAT (overload)?",
+    "Port Address Translation — many inside hosts share ONE public IP. The router tracks sessions by source port number. Most common form of NAT.",
+    "NAT"
+  ],
+  [
+    "NAT order of operations — inbound on outside interface?",
+    "NAT translation happens FIRST, then routing. ACLs on outside interface check the PRE-NAT (public) address.",
+    "NAT"
+  ],
+  [
+    "What two interface commands are required for NAT?",
+    "'ip nat inside' on the LAN interface AND 'ip nat outside' on the WAN interface. Both must be set or NAT won't translate anything.",
+    "NAT"
+  ],
+  [
+    "Static port NAT syntax?",
+    "ip nat inside source static tcp [inside-ip] [inside-port] [outside-ip] [outside-port]",
+    "NAT"
+  ],
+  [
+    "What does 'ip nat inside source list' ACL match?",
+    "PRE-NAT private (inside) IP addresses — not the translated public IP.",
+    "NAT"
+  ],
+  [
+    "OSPF Administrative Distance?",
+    "110",
+    "Routing"
+  ],
+  [
+    "EIGRP internal / external AD?",
+    "90 internal / 170 external",
+    "Routing"
+  ],
+  [
+    "BGP eBGP / iBGP AD?",
+    "20 eBGP / 200 iBGP",
+    "Routing"
+  ],
+  [
+    "OSPF DR/BDR election — what wins?",
+    "Highest priority (default 1). Tie = highest Router-ID. Priority 0 = never become DR. First election is non-preemptive.",
+    "Routing"
+  ],
+  [
+    "BGP best path mnemonic?",
+    "We Love Oranges AS Oranges Mean Pure Refreshment — Weight, LP, Originate, AS-Path, Origin, MED, Peer-type, RID",
+    "Routing"
+  ],
+  [
+    "OSPF cost formula?",
+    "10^8 / bandwidth in bps. A 100Mbps link = 10^8/10^8 = cost 1. Change with 'ip ospf cost X' or adjust reference bandwidth.",
+    "Routing"
+  ],
+  [
+    "STP root bridge election?",
+    "Lowest Bridge ID wins. Bridge ID = Priority (multiples of 4096, default 32768) + System-ID-Extension (VLAN) + MAC address.",
+    "STP"
+  ],
+  [
+    "What does PortFast do?",
+    "Skips Listening and Learning states — port goes straight to Forwarding. Only use on access ports. Combine with BPDU Guard for safety.",
+    "STP"
+  ],
+  [
+    "BPDU Guard vs Root Guard?",
+    "BPDU Guard: err-disables port if ANY BPDU received (protects PortFast ports). Root Guard: blocks superior BPDUs from making a port the root (protects root placement).",
+    "STP"
+  ],
+  [
+    "CAPWAP control / data ports?",
+    "Control: UDP 5246 (DTLS encrypted). Data: UDP 5247.",
+    "Wireless"
+  ],
+  [
+    "Non-overlapping 2.4 GHz channels?",
+    "Channels 1, 6, and 11 — the only three that don't overlap in the 2.4 GHz band.",
+    "Wireless"
+  ],
+  [
+    "WPA3 Personal key exchange?",
+    "SAE — Simultaneous Authentication of Equals. Replaces PSK. Provides forward secrecy.",
+    "Wireless"
+  ],
+  [
+    "RSSI threshold for good WiFi?",
+    "Better than -70 dBm is good. -65 dBm or better is excellent. Below -80 dBm = expect drops and auth failures.",
+    "Wireless"
+  ],
+  [
+    "RADIUS vs TACACS+ — key difference?",
+    "RADIUS: UDP 1812/1813, encrypts password only, combines AuthN+AuthZ — used for network access. TACACS+: TCP 49, encrypts entire payload, separates AuthN/AuthZ/Acct — used for device admin.",
+    "Security"
+  ],
+  [
+    "What is CoPP?",
+    "Control Plane Policing — rate-limits traffic destined for the router CPU. Protects against DoS targeting routing protocols and management traffic.",
+    "Security"
+  ],
+  [
+    "SNMPv3 security levels?",
+    "noAuthNoPriv (no auth, no encryption) | authNoPriv (auth only) | authPriv (auth + encryption — use this in production)",
+    "Security"
+  ],
+  [
+    "IPsec IKE Phase 1 vs Phase 2?",
+    "Phase 1 (IKE/ISAKMP SA): builds a secure management channel — negotiates encryption, hash, DH group, authentication. Phase 2 (IPsec SA): negotiates the actual data-encryption SAs (transform-set) protecting user traffic.",
+    "IPsec"
+  ],
+  [
+    "IPsec ports and protocols?",
+    "UDP 500 (IKE), UDP 4500 (NAT-T), IP protocol 50 (ESP), IP protocol 51 (AH). ESP encrypts + authenticates; AH authenticates only.",
+    "IPsec"
+  ],
+  [
+    "ESP vs AH?",
+    "ESP (proto 50): encryption + authentication — the one you actually use. AH (proto 51): authentication only, no encryption, breaks through NAT. Almost always use ESP.",
+    "IPsec"
+  ],
+  [
+    "Why must IPsec crypto ACLs be mirror images?",
+    "Each peer defines interesting traffic from its own perspective. If R1 permits 10.0.0.0→192.168.0.0, R2 must permit 192.168.0.0→10.0.0.0. Mismatched ACLs = Phase 2 fails or traffic isn't encrypted.",
+    "IPsec"
+  ],
+  [
+    "What does 'show crypto isakmp sa' state QM_IDLE mean?",
+    "IKE Phase 1 is complete and the management tunnel is up (Quick Mode idle, ready to build Phase 2). MM_NO_STATE or missing = Phase 1 failed — check policy mismatch or PSK.",
+    "IPsec"
+  ],
+  [
+    "DMVPN three components?",
+    "mGRE (multipoint GRE tunnel), NHRP (maps tunnel IP→physical NBMA IP, spokes register with hub NHS), and IPsec (encrypts the tunnel). Phase 3 adds NHRP redirect for spoke-to-spoke.",
+    "IPsec"
+  ],
+  [
+    "IPsec 'no proposal chosen' in debug means?",
+    "Phase 1 or Phase 2 transform mismatch. Both peers must agree on encryption, hash, DH group, and lifetime. Check each parameter individually on both sides.",
+    "IPsec"
+  ],
+  [
+    "DSCP EF value and use?",
+    "EF = Expedited Forwarding = decimal 46 (101110). Used for voice (VoIP) — low latency, low jitter, priority queue via LLQ.",
+    "QoS"
+  ],
+  [
+    "DSCP AF class formula?",
+    "AFxy: x=class (1-4), y=drop precedence (1-3). Decimal = 8x + 2y. Example AF31 = 8(3)+2(1) = 26. Higher y = dropped sooner under congestion.",
+    "QoS"
+  ],
+  [
+    "Policing vs shaping?",
+    "Policing drops or remarks excess traffic immediately (hard limit, no buffer) — use inbound. Shaping buffers excess and sends later (smooths bursts, adds delay) — use outbound to match carrier CIR.",
+    "QoS"
+  ],
+  [
+    "What is LLQ?",
+    "Low Latency Queuing = CBWFQ + a strict priority queue for real-time traffic (voice). The priority queue is policed so it can't starve other classes during congestion.",
+    "QoS"
+  ],
+  [
+    "QoS trust boundary — where?",
+    "As close to the source as possible — ideally the access switch port where the IP phone connects (mls qos trust dscp / trust device cisco-phone). Never trust markings from untrusted end hosts.",
+    "QoS"
+  ],
+  [
+    "Three QoS models?",
+    "Best Effort (no QoS), IntServ (RSVP, per-flow reservation, doesn't scale), DiffServ (per-hop behavior via DSCP marking — the standard used everywhere).",
+    "QoS"
+  ],
+  [
+    "What is WRED?",
+    "Weighted Random Early Detection — drops packets probabilistically before the queue fills, based on DSCP. Prevents TCP global synchronization (all flows backing off together).",
+    "QoS"
+  ],
+  [
+    "Lightweight AP vs autonomous AP?",
+    "Autonomous: standalone, self-contained config, managed individually. Lightweight: controlled by a WLC via CAPWAP, downloads config from controller, enables central management + RRM + fast roaming.",
+    "Wireless"
+  ],
+  [
+    "CAPWAP split-MAC — what stays local at the AP?",
+    "Real-time 802.11 functions: beacons, probe responses, ACKs, encryption/decryption, buffering. The WLC handles associations, authentication, mobility, and policy (non-real-time).",
+    "Wireless"
+  ],
+  [
+    "WLC interface types?",
+    "Management (WLC access + AP-manager duties), Virtual (used for guest web-auth, mobility, DHCP relay — often 192.0.2.1), Dynamic (maps WLANs/SSIDs to VLANs), Service Port (out-of-band mgmt).",
+    "Wireless"
+  ],
+  [
+    "802.11 roaming standards k / v / r?",
+    "802.11k: neighbor lists (client learns nearby APs). 802.11v: BSS transition mgmt (network steers clients). 802.11r: Fast BSS Transition (FT) — pre-authenticates for sub-50ms roams, critical for voice.",
+    "Wireless"
+  ],
+  [
+    "2.4 GHz vs 5 GHz tradeoffs?",
+    "2.4 GHz: better range/penetration, only 3 non-overlapping channels (1/6/11), crowded. 5 GHz: more channels, less interference, higher throughput, shorter range. 6 GHz (WiFi 6E) adds even more spectrum.",
+    "Wireless"
+  ],
+  [
+    "WPA2 vs WPA3?",
+    "WPA2: AES-CCMP, PSK 4-way handshake (vulnerable to offline dictionary + KRACK). WPA3: SAE (dragonfly) handshake with forward secrecy, mandatory PMF (802.11w), harder to crack offline.",
+    "Wireless"
+  ],
+  [
+    "Router-on-a-stick — what is it?",
+    "Inter-VLAN routing over a single trunk link using subinterfaces. Each subinterface has 'encapsulation dot1q <vlan>' and acts as the gateway for that VLAN. Cheap but the trunk is a bottleneck.",
+    "Routing"
+  ],
+  [
+    "Router-on-a-stick subinterface config?",
+    "interface Gi0/0.10 → encapsulation dot1q 10 → ip address 192.168.10.1 255.255.255.0. The physical interface stays up with no IP; native VLAN needs no encapsulation tag (or use 'dot1q 1 native').",
+    "Routing"
+  ],
+  [
+    "SVI vs router-on-a-stick?",
+    "SVI (interface vlan X on an L3 switch) routes in hardware (ASIC) at wire speed — scales well. Router-on-a-stick routes in software over one trunk — simple but limited. Use SVIs on L3 switches for real networks.",
+    "Routing"
+  ],
+  [
+    "What enables inter-VLAN routing on an L3 switch?",
+    "'ip routing' globally, plus an SVI (interface vlan X) with an IP for each VLAN acting as the gateway. Optionally routed ports (no switchport) for point-to-point L3 links.",
+    "Routing"
+  ],
+  [
+    "Why use route tags in redistribution?",
+    "To prevent routing loops at multi-point redistribution boundaries. Tag routes as they enter one protocol, then deny that tag when redistributing back — stops feedback loops.",
+    "Routing"
+  ],
+  [
+    "Default seed metric problem in redistribution?",
+    "OSPF and RIP can't understand EIGRP's composite metric (and vice versa). You must set a seed metric with 'default-metric' or in the redistribute statement, or routes may be discarded.",
+    "Routing"
+  ],
+  [
+    "What are the 7 layers of the OSI model, top to bottom?",
+    "Application, Presentation, Session, Transport, Network, Data Link, Physical — mnemonic: All People Seem To Need Data Processing.",
+    "OSI"
+  ],
+  [
+    "What PDU (data unit) name is used at Layer 4, 3, and 2?",
+    "L4 = Segment (TCP) / Datagram (UDP). L3 = Packet. L2 = Frame. L1 is just Bits.",
+    "OSI"
+  ],
+  [
+    "What's the difference between encapsulation and de-encapsulation?",
+    "Encapsulation: each layer adds its own header going DOWN the stack on the sender. De-encapsulation: each layer strips its header going UP the stack on the receiver.",
+    "OSI"
+  ],
+  [
+    "Why does the L2 destination MAC change at every hop but the L3 IP stays the same?",
+    "Routers rewrite the frame's MAC addresses at each hop for next-hop forwarding, but IP addressing is end-to-end and never changes as the packet is routed.",
+    "OSI"
+  ],
+  [
+    "How many layers does the TCP/IP model have, and how does it map to OSI?",
+    "4 layers: Application, Transport, Internet, Network Access. It collapses OSI's L5-L7 into one Application layer, and L1-L2 into one Network Access layer.",
+    "OSI"
+  ],
+  [
+    "What is the bottom-up troubleshooting method?",
+    "Start checking at Layer 1 (physical/cabling) and work upward through L2/L3/L4 to L7, verifying the cheapest and most fundamental things first.",
+    "OSI"
+  ],
+  [
+    "What's the difference between a recursive and an iterative DNS query?",
+    "Recursive: the client asks one server and expects a final answer. Iterative: that server does the legwork, following referrals from root to TLD to authoritative.",
+    "DNS"
+  ],
+  [
+    "What does a CNAME record do?",
+    "Creates an alias — points one name at ANOTHER name (which must itself resolve via an A/AAAA record), rather than directly at an IP address.",
+    "DNS"
+  ],
+  [
+    "In an MX record, does a lower or higher priority number get tried first?",
+    "Lower number = more preferred, tried first. Mail falls back to higher-priority numbers only if the lower ones are unreachable.",
+    "DNS"
+  ],
+  [
+    "What is a PTR record used for?",
+    "Reverse DNS — maps an IP address back to a hostname, in a special reverse zone (in-addr.arpa for IPv4). Missing PTR records commonly get outbound mail flagged as spam.",
+    "DNS"
+  ],
+  [
+    "What does a record's TTL control?",
+    "How long, in seconds, a resolver may cache that record's answer before it must ask again. Lower TTL = faster propagation, more lookup traffic.",
+    "DNS"
+  ],
+  [
+    "Which DNS record type delegates a zone to specific name servers?",
+    "NS (Name Server) — this is what makes DNS a distributed hierarchy, letting a parent zone point at the authoritative servers for a child zone.",
+    "DNS"
+  ],
+  [
+    "What does App-ID do in an NGFW?",
+    "Identifies the actual application generating traffic regardless of port, protocol, or evasion technique, so policy can target specific apps instead of just ports.",
+    "Security"
+  ],
+  [
+    "What's the difference between an IDS and an IPS?",
+    "IDS (Intrusion Detection System) only alerts on matching traffic. IPS (Intrusion Prevention System) actively blocks/drops it in-line, in real time.",
+    "Security"
+  ],
+  [
+    "Why do NGFWs need to perform TLS/SSL inspection?",
+    "Most traffic is encrypted today — without decrypting it, App-ID/DPI/IPS features are mostly blind to that traffic's actual content.",
+    "Security"
+  ],
+  [
+    "What is MAB in the context of Cisco ISE?",
+    "MAC Authentication Bypass — a fallback method for devices that can't do 802.1X (printers, IoT, badge readers), authenticating by MAC address instead.",
+    "Security"
+  ],
+  [
+    "What does an SGT (Security Group Tag) do in Cisco TrustSec?",
+    "Tags traffic with a group identity (e.g. Contractor, Finance) instead of relying on IP/VLAN — policy stays correct even if the device's IP or VLAN changes.",
+    "Security"
+  ],
+  [
+    "In ISE's flow, what's the difference between authentication and authorization?",
+    "Authentication answers 'who/what is this' (credentials, cert, MAC). Authorization answers 'are they allowed on, and what can they do' (VLAN, dACL, SGT).",
+    "Security"
+  ],
+  [
+    "What's the core difference between IaaS, PaaS, and SaaS?",
+    "How much YOU manage vs. the provider. IaaS: you manage OS/runtime/app (just renting infrastructure). PaaS: provider also manages OS/runtime, you just deploy code. SaaS: a complete ready-to-use application — you only manage your data and access.",
+    "Cloud"
+  ],
+  [
+    "In the shared responsibility model, what does the customer ALWAYS manage, even under SaaS?",
+    "Your data and who has access to it. No matter how much of the stack the provider manages, you're always responsible for data classification, access control, and how you configure sharing/permissions.",
+    "Cloud"
+  ],
+  [
+    "Give one example each of IaaS, PaaS, and SaaS.",
+    "IaaS: AWS EC2 / Azure VMs. PaaS: AWS Elastic Beanstalk / Heroku / Azure App Service. SaaS: Microsoft 365 / Salesforce / Webex.",
+    "Cloud"
+  ],
+  [
+    "What's the difference between hybrid cloud and multi-cloud?",
+    "Hybrid cloud mixes private + public, connected and working together (e.g. sensitive data stays on-prem, burst workloads go to public cloud). Multi-cloud means using more than one public cloud provider — it can be entirely public, just spread across vendors to avoid lock-in.",
+    "Cloud"
+  ],
+  [
+    "What is a VPC (or VNet in Azure)?",
+    "A Virtual Private Cloud — your own isolated Layer 3 network/addressing space within a cloud provider, conceptually equivalent to your own private on-prem network.",
+    "Cloud"
+  ],
+  [
+    "What are the three main ways to connect an on-prem network to the cloud?",
+    "Site-to-site IPsec VPN (fastest to set up), a dedicated private circuit (AWS Direct Connect / Azure ExpressRoute / Google Cloud Interconnect — lower latency, no internet), or SD-WAN with cloud on-ramps that automatically pick the best path.",
+    "Cloud"
+  ]
+]
